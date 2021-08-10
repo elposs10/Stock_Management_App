@@ -1,0 +1,5 @@
+package tn.utss.model;
+
+public enum MovementType {
+	SUPPLYRECEPTION, CORRECTION, INTERNALPRODUCTION,TOSTORE,DESTRUCTION 
+}
