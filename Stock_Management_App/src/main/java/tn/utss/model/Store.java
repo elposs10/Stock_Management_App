@@ -7,10 +7,11 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.Transient;
 import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.mongodb.core.mapping.Field;
 
 @Document(collection = "Stores")
 public class Store implements Serializable {
-	
+
 	/**
 	 * 
 	 */
@@ -22,8 +23,10 @@ public class Store implements Serializable {
 	@Id
 	private long idStore;
 	@Indexed
+	@Field(value = "StoreName")
 	private String nameStore;
 	@Indexed
+	@Field(value = "StoreLocalisation")
 	private String localisationStore;
 
 	private Stock stock;

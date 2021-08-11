@@ -4,18 +4,17 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.Objects;
 
-import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.Transient;
 import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
-import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.data.mongodb.core.mapping.Field;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 @Document(collection = "Stocks")
 public class Stock implements Serializable {
-	
+
 	/**
 	 * 
 	 */
@@ -27,26 +26,29 @@ public class Stock implements Serializable {
 	@Id
 	private long idStock;
 	@Indexed
+	@Field(value = "StockName")
 	private String nameStock;
 
 	@JsonProperty
+	@Field(value = "StockType")
 	private StockType stockType;
 
-	@CreatedDate
-	@DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
+	@Field(value = "StockValidity")
 	private Date validityStock;
 
-	@CreatedDate
-	@DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
+	@Field(value = "StockComming")
 	private Date commingStock;
 
-	@CreatedDate
-	@DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
+	@Field(value = "StockGoing")
 	private Date goingStock;
 
+	@Field(value = "StockQuantity")
 	private int quantityStock;
+	@Field(value = "StockCost")
 	private int costStock;
+	@Field(value = "StockMax")
 	private int maxStock;
+	@Field(value = "StockMin")
 	private int minStock;
 
 	private Store store;
