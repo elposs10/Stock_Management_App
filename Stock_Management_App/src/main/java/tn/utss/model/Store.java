@@ -50,6 +50,13 @@ public class Store implements Serializable {
 		this.localisationStore = localisationStore;
 	}
 
+	public Store(long idStore, String nameStore, String localisationStore) {
+		super();
+		this.idStore = idStore;
+		this.nameStore = nameStore;
+		this.localisationStore = localisationStore;
+	}
+
 	public long getIdStore() {
 		return idStore;
 	}
