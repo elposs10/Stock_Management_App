@@ -9,6 +9,7 @@ import org.springframework.data.annotation.Transient;
 import org.springframework.data.mongodb.core.index.IndexDirection;
 import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.mongodb.core.mapping.Field;
 
 @Document(collection = "Products")
 public class Product implements Serializable {
@@ -23,15 +24,23 @@ public class Product implements Serializable {
 
 	@Id
 	private long idProduct;
+	@Field(value = "ProductTitle")
 	private String titleProduct;
+	@Field(value = "ProductDescription")
 	private String descriptionProduct;
+	@Field(value = "ProductQuantity")
 	private int quantityProduct;
 	@Indexed(direction = IndexDirection.ASCENDING)
+	@Field(value = "ProductPrice")
 	private float priceProduct;
+	@Field(value = "ProductWeight")
 	private float weightProduct;
 	@Indexed(direction = IndexDirection.ASCENDING)
+	@Field(value = "ProductBuyingPrice")
 	private float buyingPriceProduct;
+	@Field(value = "ProductMaxQuantity")
 	private int maxQuantityProduct;
+	@Field(value = "ProductImage")
 	private String imageProd;
 
 	private SubCategory subCategory;
@@ -67,6 +76,19 @@ public class Product implements Serializable {
 		super();
 		this.titleProduct = titleProduct;
 		this.descriptionProduct = descriptionProduct;
+	}
+
+	public Product(long idProduct, String titleProduct, String descriptionProduct, int quantityProduct,
+			float priceProduct, float weightProduct, float buyingPriceProduct, int maxQuantityProduct) {
+		super();
+		this.idProduct = idProduct;
+		this.titleProduct = titleProduct;
+		this.descriptionProduct = descriptionProduct;
+		this.quantityProduct = quantityProduct;
+		this.priceProduct = priceProduct;
+		this.weightProduct = weightProduct;
+		this.buyingPriceProduct = buyingPriceProduct;
+		this.maxQuantityProduct = maxQuantityProduct;
 	}
 
 	public long getIdProduct() {
