@@ -5,11 +5,10 @@ import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 
-import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.Transient;
 import org.springframework.data.mongodb.core.mapping.Document;
-import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.data.mongodb.core.mapping.Field;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
@@ -27,11 +26,11 @@ public class Movement implements Serializable {
 	@Id
 	private long idMovement;
 
-	@CreatedDate
-	@DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
-	private Date orderDate = new Date();
+	@Field(value = "OrderDate")
+	private Date orderDate;
 
 	@JsonProperty
+	@Field(value = "MovementType")
 	private MovementType movType;
 
 	private List<Product> movProducts;

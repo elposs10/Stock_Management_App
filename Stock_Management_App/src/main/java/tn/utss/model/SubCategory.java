@@ -1,5 +1,6 @@
 package tn.utss.model;
 
+import java.io.Serializable;
 import java.util.List;
 import java.util.Objects;
 
@@ -7,6 +8,7 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.Transient;
 import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.mongodb.core.mapping.Field;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -14,7 +16,12 @@ import lombok.Data;
 @Data
 @AllArgsConstructor
 @Document(collection = "SubCategories")
-public class SubCategory {
+public class SubCategory implements Serializable {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 
 	@Transient
 	public static final String SEQUENCE_NAME = "subcategory_sequence";
@@ -22,6 +29,7 @@ public class SubCategory {
 	@Id
 	private long idSubCategory;
 	@Indexed
+	@Field(value = "SubCategoryName")
 	private String nameSubCategory;
 
 	private Category category;
