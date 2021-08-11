@@ -1,38 +1,55 @@
 package tn.utss.model;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 
-import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.Transient;
 import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
-import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.data.mongodb.core.mapping.Field;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 @Document(collection = "Users")
-public class User {
+public class User implements Serializable {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 
 	@Transient
 	public static final String SEQUENCE_NAME = "user_sequence";
 
 	@Id
-	protected long id;
+	private long id;
 	@Indexed
-	protected String lastname;
+	@Field(value = "Lastname")
+	private String lastname;
+
 	@Indexed
-	protected String firstname;
-	protected long cin;
-	@CreatedDate
-	@DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
-	protected Date birthdtae;
+	@Field(value = "Firstname")
+	private String firstname;
+
+	@Field(value = "CIN")
+	private long cin;
+
+	@Field(value = "Birthdate")
+	private Date birthdate;
+
 	protected String password;
 	protected String confirmPassword;
+
+	@Field(value = "PhoneNumber")
 	protected String phoneNumber;
+
+	@Field(value = "Status")
 	protected boolean status;
+
+	@Field(value = "Email")
 	protected String email;
 
 	@JsonProperty
@@ -47,7 +64,7 @@ public class User {
 		// TODO Auto-generated constructor stub
 	}
 
-	public User(long id, String lastname, String firstname, long cin, Date birthdtae, String password,
+	public User(long id, String lastname, String firstname, long cin, Date birthdate, String password,
 			String confirmPassword, String phoneNumber, boolean status, String email, Role role,
 			List<Movement> userMovement, List<Store> userStore) {
 		super();
@@ -55,7 +72,7 @@ public class User {
 		this.lastname = lastname;
 		this.firstname = firstname;
 		this.cin = cin;
-		this.birthdtae = birthdtae;
+		this.birthdate = birthdate;
 		this.password = password;
 		this.confirmPassword = confirmPassword;
 		this.phoneNumber = phoneNumber;
@@ -64,6 +81,21 @@ public class User {
 		this.role = role;
 		this.userMovement = userMovement;
 		this.userStore = userStore;
+	}
+
+	public User(long id, String lastname, String firstname, long cin, Date birthdate, String password,
+			String confirmPassword, String phoneNumber, boolean status, String email) {
+		super();
+		this.id = id;
+		this.lastname = lastname;
+		this.firstname = firstname;
+		this.cin = cin;
+		this.birthdate = birthdate;
+		this.password = password;
+		this.confirmPassword = confirmPassword;
+		this.phoneNumber = phoneNumber;
+		this.status = status;
+		this.email = email;
 	}
 
 	public User(String password, String email, Role role) {
@@ -105,12 +137,12 @@ public class User {
 		this.cin = cin;
 	}
 
-	public Date getBirthdtae() {
-		return birthdtae;
+	public Date getbirthdate() {
+		return birthdate;
 	}
 
-	public void setBirthdtae(Date birthdtae) {
-		this.birthdtae = birthdtae;
+	public void setbirthdate(Date birthdate) {
+		this.birthdate = birthdate;
 	}
 
 	public String getPassword() {
@@ -183,7 +215,7 @@ public class User {
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(birthdtae, cin, confirmPassword, email, firstname, id, lastname, password, phoneNumber,
+		return Objects.hash(birthdate, cin, confirmPassword, email, firstname, id, lastname, password, phoneNumber,
 				role, status, userMovement, userStore);
 	}
 
@@ -196,7 +228,7 @@ public class User {
 		if (getClass() != obj.getClass())
 			return false;
 		User other = (User) obj;
-		return Objects.equals(birthdtae, other.birthdtae) && cin == other.cin
+		return Objects.equals(birthdate, other.birthdate) && cin == other.cin
 				&& Objects.equals(confirmPassword, other.confirmPassword) && Objects.equals(email, other.email)
 				&& Objects.equals(firstname, other.firstname) && Objects.equals(id, other.id)
 				&& Objects.equals(lastname, other.lastname) && Objects.equals(password, other.password)
@@ -207,7 +239,7 @@ public class User {
 	@Override
 	public String toString() {
 		return "User [id=" + id + ", lastname=" + lastname + ", firstname=" + firstname + ", cin=" + cin
-				+ ", birthdtae=" + birthdtae + ", password=" + password + ", confirmPassword=" + confirmPassword
+				+ ", birthdate=" + birthdate + ", password=" + password + ", confirmPassword=" + confirmPassword
 				+ ", phoneNumber=" + phoneNumber + ", status=" + status + ", email=" + email + ", role=" + role
 				+ ", userMovement=" + userMovement + ", userStore=" + userStore + "]";
 	}
