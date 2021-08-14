@@ -52,6 +52,9 @@ public class User implements Serializable {
 	@Field(value = "Email")
 	protected String email;
 
+	@Field(value = "Username")
+	protected String username;
+
 	@JsonProperty
 	private Role role;
 
@@ -102,6 +105,14 @@ public class User implements Serializable {
 		super();
 		this.password = password;
 		this.email = email;
+		this.role = role;
+	}
+
+	public User(String password, String email, String username, Role role) {
+		super();
+		this.password = password;
+		this.email = email;
+		this.username = username;
 		this.role = role;
 	}
 
@@ -185,6 +196,26 @@ public class User implements Serializable {
 		this.email = email;
 	}
 
+	public Date getBirthdate() {
+		return birthdate;
+	}
+
+	public void setBirthdate(Date birthdate) {
+		this.birthdate = birthdate;
+	}
+
+	public String getUsername() {
+		return username;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
+	}
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+
 	public Role getRole() {
 		return role;
 	}
@@ -216,7 +247,7 @@ public class User implements Serializable {
 	@Override
 	public int hashCode() {
 		return Objects.hash(birthdate, cin, confirmPassword, email, firstname, id, lastname, password, phoneNumber,
-				role, status, userMovement, userStore);
+				role, status, userMovement, userStore, username);
 	}
 
 	@Override
@@ -230,18 +261,19 @@ public class User implements Serializable {
 		User other = (User) obj;
 		return Objects.equals(birthdate, other.birthdate) && cin == other.cin
 				&& Objects.equals(confirmPassword, other.confirmPassword) && Objects.equals(email, other.email)
-				&& Objects.equals(firstname, other.firstname) && Objects.equals(id, other.id)
+				&& Objects.equals(firstname, other.firstname) && id == other.id
 				&& Objects.equals(lastname, other.lastname) && Objects.equals(password, other.password)
 				&& Objects.equals(phoneNumber, other.phoneNumber) && role == other.role && status == other.status
-				&& Objects.equals(userMovement, other.userMovement) && Objects.equals(userStore, other.userStore);
+				&& Objects.equals(userMovement, other.userMovement) && Objects.equals(userStore, other.userStore)
+				&& Objects.equals(username, other.username);
 	}
 
 	@Override
 	public String toString() {
 		return "User [id=" + id + ", lastname=" + lastname + ", firstname=" + firstname + ", cin=" + cin
 				+ ", birthdate=" + birthdate + ", password=" + password + ", confirmPassword=" + confirmPassword
-				+ ", phoneNumber=" + phoneNumber + ", status=" + status + ", email=" + email + ", role=" + role
-				+ ", userMovement=" + userMovement + ", userStore=" + userStore + "]";
+				+ ", phoneNumber=" + phoneNumber + ", status=" + status + ", email=" + email + ", username=" + username
+				+ ", role=" + role + ", userMovement=" + userMovement + ", userStore=" + userStore + "]";
 	}
 
 }
