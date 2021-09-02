@@ -83,10 +83,9 @@ public class User implements Serializable {
 		this.userStore = userStore;
 	}
 
-	public User(long id, String lastname, String firstname, long cin, Date birthdate, String password,
+	public User(String lastname, String firstname, long cin, Date birthdate, String password,
 			String confirmPassword, String phoneNumber, boolean status, String email) {
 		super();
-		this.id = id;
 		this.lastname = lastname;
 		this.firstname = firstname;
 		this.cin = cin;

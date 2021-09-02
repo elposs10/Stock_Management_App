@@ -12,9 +12,9 @@ public interface ProductService {
 
 	Product retrieveProduct(long idProduct);
 
-	Product addProduct(Product p);
+	Product addProduct(Product p,long idStock);
 
-	Product updateProduct(Product p);
+	Product updateProduct(Product p,long idStock);
 
 	void deleteProduct(long idProduct);
 

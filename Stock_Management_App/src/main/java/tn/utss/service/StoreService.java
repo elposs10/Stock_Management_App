@@ -2,6 +2,7 @@ package tn.utss.service;
 
 import java.util.List;
 
+import tn.utss.model.Stock;
 import tn.utss.model.Store;
 
 public interface StoreService {

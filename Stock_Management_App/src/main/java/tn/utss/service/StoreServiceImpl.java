@@ -7,7 +7,9 @@ import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import tn.utss.model.Stock;
 import tn.utss.model.Store;
+import tn.utss.repository.StockRepository;
 import tn.utss.repository.StoreRepository;
 
 @Service
@@ -15,6 +17,12 @@ public class StoreServiceImpl implements StoreService {
 
 	@Autowired
 	StoreRepository storeRepository;
+	
+	@Autowired
+	StockRepository stockRepository;
+	
+	@Autowired
+	StockServiceImpl stockServiceImpl;
 	
 	@Autowired
 	SequenceGeneratorService sequenceGeneratorService;
@@ -36,6 +44,12 @@ public class StoreServiceImpl implements StoreService {
 	@Override
 	public Store addStore(Store s) {
 		s.setIdStore(sequenceGeneratorService.generateSequence(Store.SEQUENCE_NAME));
+		storeRepository.save(s);
+		
+		Stock st = new Stock();
+		st.setIdStock(sequenceGeneratorService.generateSequence(Stock.SEQUENCE_NAME));
+		stockRepository.save(st);
+		s.setStock(st);
 		return storeRepository.save(s);
 	}
 

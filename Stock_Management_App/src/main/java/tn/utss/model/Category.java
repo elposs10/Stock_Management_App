@@ -14,7 +14,6 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 
 @Data
-@AllArgsConstructor
 @Document(collection = "Categories")
 public class Category implements Serializable {
 
@@ -39,12 +38,6 @@ public class Category implements Serializable {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Category(long idCategory, String nameCategory, List<SubCategory> subCategories) {
-		super();
-		this.idCategory = idCategory;
-		this.nameCategory = nameCategory;
-		this.subCategories = subCategories;
-	}
 
 	public Category(String nameCategory) {
 		super();

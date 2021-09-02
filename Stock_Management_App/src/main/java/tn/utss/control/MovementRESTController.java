@@ -54,4 +54,14 @@ public class MovementRESTController {
 	public void deleteMovement(@PathVariable("idMovement") long idMovement) {
 		serviceMovement.deleteMovement(idMovement);
 	}
+	
+	@PostMapping(value="/supplyReception/{idStock}")
+	public Movement SupplyReception(@RequestBody Movement movement ,
+									
+									@PathVariable("idStock") long idStock) {
+		
+			 
+		return serviceMovement.supplyReception(movement ,idStock);
+	}
+
 }

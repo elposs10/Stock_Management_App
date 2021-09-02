@@ -2,6 +2,7 @@ package tn.utss.model;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 import java.util.Objects;
 
 import org.springframework.data.annotation.Id;
@@ -14,15 +15,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 @Document(collection = "Stocks")
 public class Stock implements Serializable {
-
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
-
 	@Transient
 	public static final String SEQUENCE_NAME = "stock_sequence";
-
 	@Id
 	private long idStock;
 	@Indexed
@@ -35,7 +30,6 @@ public class Stock implements Serializable {
 
 	@Field(value = "StockValidity")
 	private Date validityStock;
-
 	@Field(value = "StockComming")
 	private Date commingStock;
 
@@ -49,17 +43,35 @@ public class Stock implements Serializable {
 	@Field(value = "StockMax")
 	private int maxStock;
 	@Field(value = "StockMin")
-	private int minStock;
+	private int minStock;	
+	private List<Product> StockProducts;
+	
+	
 
-	private Store store;
+	
 
-	public Stock() {
+
+	public Stock(String nameStock, StockType stockType, Date validityStock, Date commingStock, Date goingStock,
+			int quantityStock, int costStock, int maxStock, int minStock, List<Product> stockProducts, Store store) {
 		super();
-		// TODO Auto-generated constructor stub
+		this.nameStock = nameStock;
+		this.stockType = stockType;
+		this.validityStock = validityStock;
+		this.commingStock = commingStock;
+		this.goingStock = goingStock;
+		this.quantityStock = quantityStock;
+		this.costStock = costStock;
+		this.maxStock = maxStock;
+		this.minStock = minStock;
+		StockProducts = stockProducts;
+		this.store = store;
 	}
 
+
+
 	public Stock(long idStock, String nameStock, StockType stockType, Date validityStock, Date commingStock,
-			Date goingStock, int quantityStock, int costStock, int maxStock, int minStock, Store store) {
+			Date goingStock, int quantityStock, int costStock, int maxStock, int minStock, List<Product> stockProducts,
+			Store store) {
 		super();
 		this.idStock = idStock;
 		this.nameStock = nameStock;
@@ -71,15 +83,18 @@ public class Stock implements Serializable {
 		this.costStock = costStock;
 		this.maxStock = maxStock;
 		this.minStock = minStock;
+		StockProducts = stockProducts;
 		this.store = store;
 	}
 
-	public Stock(String nameStock, int maxStock, int minStock) {
+	private Store store;
+
+	public Stock() {
 		super();
-		this.nameStock = nameStock;
-		this.maxStock = maxStock;
-		this.minStock = minStock;
+		// TODO Auto-generated constructor stub
 	}
+
+
 
 	public long getIdStock() {
 		return idStock;
@@ -167,6 +182,15 @@ public class Stock implements Serializable {
 
 	public void setStore(Store store) {
 		this.store = store;
+	}
+	
+
+	public List<Product> getStockProducts() {
+		return StockProducts;
+	}
+
+	public void setStockProducts(List<Product> stockProducts) {
+		StockProducts = stockProducts;
 	}
 
 	@Override

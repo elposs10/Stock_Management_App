@@ -4,10 +4,10 @@ import java.util.List;
 
 import tn.utss.model.Movement;
 
+
 public interface MovementService {
 
 	// ===== CRUD =====//
-
 	List<Movement> retrieveAllMovements();
 
 	Movement retrieveMovement(long idMovement);
@@ -17,6 +17,11 @@ public interface MovementService {
 	Movement updateMovement(Movement m);
 
 	void deleteMovement(long idMovement);
-
 	// ===== CRUD =====//
+
+	Movement supplyReception(Movement mov,  long idStock);
+
+	
+
+	
 }

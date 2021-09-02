@@ -18,6 +18,8 @@ public class UserServiceImpl implements UserService {
 	
 	@Autowired
 	SequenceGeneratorService sequenceGeneratorService;
+	
+	
 
 	private static final Logger L = LogManager.getLogger(UserServiceImpl.class);
 

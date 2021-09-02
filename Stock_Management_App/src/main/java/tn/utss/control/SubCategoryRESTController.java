@@ -37,9 +37,9 @@ public class SubCategoryRESTController {
 
 	}
 
-	@PostMapping(value = "/addSubCategory")
-	public SubCategory addSubCategory(@RequestBody SubCategory SubCategory) {
-		serviceSubCategory.addSubCategory(SubCategory);
+	@PostMapping(value = "/addSubCategory/{idCategory}")
+	public SubCategory addSubCategory(@RequestBody SubCategory SubCategory,@PathVariable long idCategory) {
+		serviceSubCategory.addSubCategory(SubCategory,idCategory);
 		return SubCategory;
 
 	}

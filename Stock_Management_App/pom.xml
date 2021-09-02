@@ -15,7 +15,7 @@
 	<name>Stock_Management_App</name>
 	<description>A stock management application using Spring Boot for the backend, ReactJS for the frontend and MongoDB for the database</description>
 	<properties>
-		<java.version>11</java.version>
+		<java.version>1.8</java.version>
 	</properties>
 	<dependencies>
 		<dependency>

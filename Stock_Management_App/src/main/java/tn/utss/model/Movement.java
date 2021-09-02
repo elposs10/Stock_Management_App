@@ -15,11 +15,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 @Document(collection = "Movements")
 public class Movement implements Serializable {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
-
 	@Transient
 	public static final String SEQUENCE_NAME = "movement_sequence";
 
@@ -40,6 +36,20 @@ public class Movement implements Serializable {
 	public Movement() {
 		super();
 		// TODO Auto-generated constructor stub
+	}
+	
+	public Movement(Date orderDate, List<Product> movProducts) {
+		super();
+		this.orderDate = orderDate;
+		this.movProducts = movProducts;
+	}
+	
+	public Movement(Date orderDate, MovementType movType, List<Product> movProducts, User movUser) {
+		super();
+		this.orderDate = orderDate;
+		this.movType = movType;
+		this.movProducts = movProducts;
+		this.movUser = movUser;
 	}
 
 	public Movement(long idMovement, Date orderDate, MovementType movType, List<Product> movProducts, User movUser) {

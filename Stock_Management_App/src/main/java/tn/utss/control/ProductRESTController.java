@@ -37,16 +37,16 @@ public class ProductRESTController {
 
 	}
 
-	@PostMapping(value = "/addProduct")
-	public Product addProduct(@RequestBody Product Product) {
-		serviceProduct.addProduct(Product);
+	@PostMapping(value = "/addProduct/{idStock}")
+	public Product addProduct(@RequestBody Product Product,@PathVariable("idStock")long idStock ) {
+		serviceProduct.addProduct(Product,idStock);
 		return Product;
 
 	}
 
-	@PutMapping(value = "/updateProduct")
-	public Product updateProduct(@RequestBody Product Product) {
-		return serviceProduct.updateProduct(Product);
+	@PutMapping(value = "/updateProduct/{idStock}")
+	public Product updateProduct(@RequestBody Product Product,@PathVariable long idStock) {
+		return serviceProduct.updateProduct(Product,idStock);
 
 	}
 

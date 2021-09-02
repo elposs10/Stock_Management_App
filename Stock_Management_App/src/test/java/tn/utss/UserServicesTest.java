@@ -30,14 +30,14 @@ public class UserServicesTest {
 		Date date2 = new Date(2021 - 01 - 02);
 		Date date3 = new Date(2021 - 01 - 03);
 
-		User u1 = new User(1, "Mihoubi", "Oussema", 12345678, date1, "abc123", "abc123", "+21650123456", true,
+		User u1 = new User("Mihoubi", "Oussema", 12345678, date1, "abc123", "abc123", "+21650123456", true,
 				"oussema@esprit.tn");
-		User u2 = new User(2, "Houissa", "Ghassen", 87654321, date2, "def456", "def456", "+21650123456", true,
+		User u2 = new User("Houissa", "Ghassen", 87654321, date2, "def456", "def456", "+21650123456", true,
 				"ghassen@esprit.tn");
-		User u3 = new User(3, "Hammadi", "Moneim", 12341234, date3, "ghi789", "ghi789", "+21650123456", true,
+		User u3 = new User("Hammadi", "Moneim", 12341234, date3, "ghi789", "ghi789", "+21650123456", true,
 				"moneim@esprit.tn");
-		userService.addUser(u1);
-		userService.addUser(u2);
+//		userService.addUser(u1);
+//		userService.addUser(u2);
 		userService.addUser(u3);
 	}
 

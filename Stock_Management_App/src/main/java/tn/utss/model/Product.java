@@ -14,9 +14,6 @@ import org.springframework.data.mongodb.core.mapping.Field;
 @Document(collection = "Products")
 public class Product implements Serializable {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 
 	@Transient
@@ -42,10 +39,39 @@ public class Product implements Serializable {
 	private int maxQuantityProduct;
 	@Field(value = "ProductImage")
 	private String imageProd;
+	@Field(value = "Barcodeprod")
+	private String barcode;
+	
+	
+	public Product(String titleProduct, String descriptionProduct, int quantityProduct, float priceProduct,
+			float weightProduct, float buyingPriceProduct, int maxQuantityProduct, String imageProd, String barcode,
+			SubCategory subCategory, Stock stock, List<Movement> productMovement) {
+		super();
+		this.titleProduct = titleProduct;
+		this.descriptionProduct = descriptionProduct;
+		this.quantityProduct = quantityProduct;
+		this.priceProduct = priceProduct;
+		this.weightProduct = weightProduct;
+		this.buyingPriceProduct = buyingPriceProduct;
+		this.maxQuantityProduct = maxQuantityProduct;
+		this.imageProd = imageProd;
+		this.barcode = barcode;
+		this.subCategory = subCategory;
+		
+		this.productMovement = productMovement;
+	}
+
+	public String getBarcode() {
+		return barcode;
+	}
+
+	public void setBarcode(String barcode) {
+		this.barcode = barcode;
+	}
 
 	private SubCategory subCategory;
 
-	private Stock stock;
+	
 
 	private List<Movement> productMovement;
 
@@ -68,7 +94,7 @@ public class Product implements Serializable {
 		this.maxQuantityProduct = maxQuantityProduct;
 		this.imageProd = imageProd;
 		this.subCategory = subCategory;
-		this.stock = stock;
+		
 		this.productMovement = productMovement;
 	}
 
@@ -171,13 +197,7 @@ public class Product implements Serializable {
 		this.subCategory = subCategory;
 	}
 
-	public Stock getStock() {
-		return stock;
-	}
-
-	public void setStock(Stock stock) {
-		this.stock = stock;
-	}
+	
 
 	public List<Movement> getProductMovement() {
 		return productMovement;
@@ -190,27 +210,10 @@ public class Product implements Serializable {
 	@Override
 	public int hashCode() {
 		return Objects.hash(buyingPriceProduct, descriptionProduct, idProduct, imageProd, maxQuantityProduct,
-				priceProduct, productMovement, quantityProduct, stock, subCategory, titleProduct, weightProduct);
+				priceProduct, productMovement, quantityProduct, subCategory, titleProduct, weightProduct);
 	}
 
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Product other = (Product) obj;
-		return Float.floatToIntBits(buyingPriceProduct) == Float.floatToIntBits(other.buyingPriceProduct)
-				&& Objects.equals(descriptionProduct, other.descriptionProduct) && idProduct == other.idProduct
-				&& Objects.equals(imageProd, other.imageProd) && maxQuantityProduct == other.maxQuantityProduct
-				&& Float.floatToIntBits(priceProduct) == Float.floatToIntBits(other.priceProduct)
-				&& Objects.equals(productMovement, other.productMovement) && quantityProduct == other.quantityProduct
-				&& Objects.equals(stock, other.stock) && Objects.equals(subCategory, other.subCategory)
-				&& Objects.equals(titleProduct, other.titleProduct)
-				&& Float.floatToIntBits(weightProduct) == Float.floatToIntBits(other.weightProduct);
-	}
+	
 
 	@Override
 	public String toString() {
@@ -218,7 +221,7 @@ public class Product implements Serializable {
 				+ descriptionProduct + ", quantityProduct=" + quantityProduct + ", priceProduct=" + priceProduct
 				+ ", weightProduct=" + weightProduct + ", buyingPriceProduct=" + buyingPriceProduct
 				+ ", maxQuantityProduct=" + maxQuantityProduct + ", imageProd=" + imageProd + ", subCategory="
-				+ subCategory + ", stock=" + stock + ", productMovement=" + productMovement + "]";
+				+ subCategory + ", stock=" + ", productMovement=" + productMovement + "]";
 	}
 
 }

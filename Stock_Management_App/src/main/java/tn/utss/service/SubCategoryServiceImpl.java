@@ -2,12 +2,15 @@ package tn.utss.service;
 
 import java.util.List;
 
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import tn.utss.model.Category;
 import tn.utss.model.SubCategory;
+import tn.utss.repository.CategoryRepository;
 import tn.utss.repository.SubCategoryRepository;
 
 @Service
@@ -15,6 +18,9 @@ public class SubCategoryServiceImpl implements SubCategoryService {
 
 	@Autowired
 	SubCategoryRepository subCategoryRepository;
+	
+	@Autowired
+	CategoryRepository CategoryRepository;
 	
 	@Autowired
 	SequenceGeneratorService sequenceGeneratorService;
@@ -34,8 +40,10 @@ public class SubCategoryServiceImpl implements SubCategoryService {
 	}
 
 	@Override
-	public SubCategory addSubCategory(SubCategory sc) {
+	public SubCategory addSubCategory(SubCategory sc,long idCategory) {
 		sc.setIdSubCategory(sequenceGeneratorService.generateSequence(SubCategory.SEQUENCE_NAME));
+		Category cat=CategoryRepository.findById(idCategory).get();
+		sc.setCategory(cat);
 		return subCategoryRepository.save(sc);
 	}
 

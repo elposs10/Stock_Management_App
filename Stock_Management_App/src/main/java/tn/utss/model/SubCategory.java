@@ -14,7 +14,6 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 
 @Data
-@AllArgsConstructor
 @Document(collection = "SubCategories")
 public class SubCategory implements Serializable {
 
